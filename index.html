@@ -1,18 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang= "en">
+
 	<head>
+	<!-- GeeMail coding challenge, Jason Tsukamoto, 3/27/2015 -->
+	<meta charset= "utf-8">
+	<title>GeeMail</title>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
-    <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
-    </script>
+    <script type="text/javascript">
+    	window.onload = function(){
+    	//outputs messages in window.geemails variable
+    	var mainElement = document.getElementById('messages');
+
+    	for (var i = 0; i < window.geemails.length; i++) { 
+    		var x = document.createElement("P");
+    		var t = document.createTextNode(window.geemails[i].sender + " " + " " + window.geemails[i].subject + " " + window.geemails[i].date);
+  	  		x.appendChild(t);
+    		mainElement.appendChild(x);
+  		}
+
+  		// inbox count
+    	document.getElementById("count").innerHTML = "(" + geemails.length + ")";
+
+  		//generate new messages 
+  		var newMessage = setInterval(function getNewMessage(){}, 5000);
+  		function getNewMessage() {
+  			  console.log('get new message');
+  		}
+  	}
+  	</script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
+		<img id="banner" src="geemail.jpg" alt="gee-mail logo" height="71" width="200">
+		<div id="column"></div>
+		<div id="verticalParent">
+			<div id="verticalChild">
+				<p><button type="button" id="button">COMPOSE</button></p>
+				<p><a id="inbox" href="">Inbox</a></p>
+				<p id="count" class="count"></p>
+				<p><a href="">Starred</a></p>
+				<p><a href="">Important</a></p>
+				<p><a href="">Chats</a></p>
+				<p><a href="">Sent Mail</a></p>
+				<p><a href="">Drafts</a></p>
+				<p><a href="">All Mail</a></p>
+			</div>
+		</div>
+		<div id="main">
+			<div class="messages">
+				<div id="messages"></div>
+			</div>
 		</div>
 	</body>
 </html>
